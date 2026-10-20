@@ -24,11 +24,11 @@ c. What additional operation is performed by the apostrophe operator ’ when th
 For Matrix R:  
 1. Define the Real Matrix R:  
 `R = [5 -2 0 7; 1 3 -4 2; 6 0 8 -1]`  
-3. Use transpose(A) and replace A with R:  
+2. Use transpose(A) and replace A with R:  
 `transpose(R)`  
-4. Use A' and replace A with R:  
+3. Use A' and replace A with R:  
 `R'`  
-5. Use A.' and replace A with R:  
+4. Use A.' and replace A with R:  
 `R.'`
 
 For Matrix Z:  
@@ -67,15 +67,29 @@ Do not use MATLAB’s left-division operator as either of the two required metho
 Required checks: Display both solution vectors and det(A). Also display norm(x inv-x cramer) and norm(A*x inv-b). The determinant must be nonzero. Both norm checks should be approximately
 zero to numerical precision.
 
-**How it works:**
+**How it works:**  
+
 For Inverse Method:  
 1. Define the coefficient matrix A and right-hand side vector b:  
 `A = [2 -1 3 2; 1 4 -2 1; 3 2 1 -1; -2 3 4 2]`  
 `b = [16; -7; 6; 7]`  
 
-2. Use the inverse matrix formula (𝑋=𝐴^−1*B):  
+2. Use the inverse matrix formula (𝑋=𝐴^−1*B) and display the solution vector using x_inv:  
 `x_inv = inv(A) * b`  
 
 For Cramer's Rule:
-1. Define the determinant of coefficient matrix A:
+1. Define the determinant of coefficient matrix A:  
 `detA = det(A)`
+
+2. Create 4 modified matrices by replacing one column with the right-hand side vector b at a time, from the leftmost column to the rightmost column:  
+`A1 = [b, A(1:4, 2:4)]`  
+`A2 = [A(1:4, 1), b, A(1:4, 3:4)]`  
+`A3 = [A(1:4, 1:2), b, A(1:4, 4)]`  
+`A4 = [A(1:4, 1:3), b]`  
+
+3. Display solution vector x_cramer as a matrix:
+`x_cramer = [det(A1)/detA; det(A2)/detA; det(A3)/detA; det(A4)/detA]`
+
+4. Display norms:
+`norm(x_inv - x_cramer)`
+`norm(A*x_inv-b)`
