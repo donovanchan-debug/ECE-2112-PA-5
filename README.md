@@ -87,9 +87,9 @@ For Cramer's Rule:
 `A3 = [A(1:4, 1:2), b, A(1:4, 4)]`  
 `A4 = [A(1:4, 1:3), b]`  
 
-3. Display solution vector x_cramer as a matrix:
+3. Display solution vector x_cramer as a matrix:  
 `x_cramer = [det(A1)/detA; det(A2)/detA; det(A3)/detA; det(A4)/detA]`
 
-4. Display norms:
-`norm(x_inv - x_cramer)`
-`norm(A*x_inv-b)`
+4. Display norms:  
+`norm(x_inv - x_cramer)`  
+`norm(A*x_inv-b)`  
